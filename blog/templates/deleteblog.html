@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Delete Blog Post! {% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+{% if perms.blog.delete_blog %}
+
+<h1>Delete Post...</h1>
+<br> <br>
+<h3>Delete {{ post.title }}</h3>
+<div class="col-6">
+   <div class="form-group">
+      <form action="" method="post">
+         {% csrf_token %}
+         <strong>Are You Sure ?</strong>
+         <hr>
+         <br><br>
+         <button type="submit" class="btn btn-dark">Delete Post!</button>
+         <button type="button" class="btn btn-dark" onClick="window.history.back();return false;">Back</button>
+      </form>
+   </div>
+</div>
+
+{% else %}
+<h1>Access Denied</h1>
+{% endif %}
+{% else %}
+<h1>Access Denied</h1>
+{% endif %}
+
+
+
+{% endblock %}

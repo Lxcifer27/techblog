@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Create a New Tech Blog! {% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<h1>Add Post...</h1>
+
+<div class="col-6">
+   <div class="form-group">
+      <form action="" method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+         {{ form.media }}
+         {{ form.as_p }}
+         <button type="submit" class="btn btn-dark">Post</button>
+         <button type="button" class="btn btn-dark" onClick="window.history.back();return false;">Back</button>
+      </form>
+   </div>
+</div>
+
+{% else %}
+<h1>Access Denied</h1>
+{% endif %}
+
+
+{% endblock %}
