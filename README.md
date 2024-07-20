@@ -25,6 +25,8 @@ Download & Install python from https://www.python.org/downloads/
 
 ```bash
   pip install django
+```
+```bash
   pip install django-ckeditor
 ```
 ## Run Locally
@@ -45,6 +47,8 @@ Install dependencies
 
 ```bash
   pip install django
+```
+```bash
   pip install django-ckeditor
 ```
 
