@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 
-{% block title %} Create a New Tech Blog! {% endblock %}
+{% block title %} Create a New Blog Category! {% endblock %}
 
 {% block content %}
 
 {% if user.is_authenticated %}
 
-<h1>Add Post...</h1>
+<h1>Add Category...</h1>
 
 <div class="col-6">
    <div class="form-group">
@@ -15,21 +15,14 @@
          {% csrf_token %}
          {{ form.media }}
          {{ form.as_p }}
-         <button type="submit" class="btn btn-dark">Post</button>
+         <button type="submit" class="btn btn-dark">Add Category</button>
          <button type="button" class="btn btn-dark" onClick="window.history.back();return false;">Back</button>
       </form>
    </div>
 </div>
 
-<script>
-   var name = "{{ user.id }}";
-   document.getElementById("author").value = name;
-   // document.getElementById("author").type = "hidden";
-</script>
-
 {% else %}
 <h1>Access Denied</h1>
 {% endif %}
-
 
 {% endblock %}

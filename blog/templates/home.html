@@ -3,18 +3,31 @@
 <h1>Latest Blog Posts</h1>
 
 <ul class="py-3 px-5 border-dark border-2 border">
-   {% for post in object_list%}
-   <li class="bg-dark p-3 border text-light"">
+   {% for post in object_list %}
+   <li class="bg-dark p-3 border text-light">
       <a href=" {% url 'article' post.pk %}" class="text-decoration-none">
-      {% if post.header_image %}
-      <img src="{{ post.header_image.url }}" alt="" width="50">
-      {% endif %}
-      {{ post.title }}
+         {% if post.header_image %}
+         <img src="{{ post.header_image.url }}" alt="" width="50">
+         {% endif %}
+         {{ post.title }}
       </a>
+      -
+      <a href="{% url 'Category' post.category|slugify %}" class="text-decoration-none"> {{ post.category }} </a>
       - {{ post.author}} - {{ post.post_date }}
+
+      {% if user.is_authenticated %}
+         {% if user.id == post.author.id %}
+         - <small><a href="{% url 'UpdateBlog' post.pk %}">Edit</a></small>
+
+         <small class="ms-2"><a href="{% url 'DeleteBlog' post.pk %}">Delete</a></small>
+         {% endif %}
+      {% endif %}
+
       <br />{{ post.body | slice:':150' | safe}}
    </li>
 
    {% endfor %}
 </ul>
+
+
 {% endblock %}

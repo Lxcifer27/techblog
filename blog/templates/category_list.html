@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %} Blog Categories {% endblock %}
+{% block content %}
+<h1>Blog Categories</h1>
+
+{% for item in cat_list %}
+<ul class="my-3">
+   <li>
+      <h4><a class="text-decoration-none" href="{% url 'Category' item|slugify %}">{{item}}</a></h4>
+   </li>
+</ul>
+{% endfor %}
+<button type="button" class="btn btn-dark mt-5" onClick="window.history.back();return false;">Back</button>
+{% endblock %}

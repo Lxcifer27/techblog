@@ -5,6 +5,8 @@
 
 {% block content %}
 {% if user.is_authenticated %}
+
+{% if user.id == post.author.id %}
 <h1>Update Post...</h1>
 
 <div class="col-6">
@@ -19,6 +21,9 @@
    </div>
 </div>
 
+{% else %}
+<h1>Access Denied</h1>
+{% endif %}
 {% else %}
 <h1>Access Denied</h1>
 {% endif %}

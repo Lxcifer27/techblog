@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if category_post %}
+<h1>{{ cats }}
+<button type="button" class="btn btn-dark float-end" onClick="window.history.back();return false;">Back</button></h1>
+<ul class="py-3 px-5 border-dark border-2 border">
+   {% for post in category_post %}
+   <li class="bg-dark p-3 border text-light">
+      <a href=" {% url 'article' post.pk %}" class="text-decoration-none">
+         {% if post.header_image %}
+         <img src="{{ post.header_image.url }}" alt="" width="50" class="img-fluid m-1">
+         {% endif %}
+         {{ post.title }}
+      </a>
+      -
+      {{ post.category }}
+      <!-- </a> -->
+      - {{ post.author}} - {{ post.post_date }}
+      <br />{{ post.body | slice:':150' | safe}}
+   </li>
+   {% endfor %}
+</ul>
+
+{% else %}
+
+<h1 class="text-center">Sorry this page does not exist.</h1>
+
+{% endif %}
+
+{% endblock %}

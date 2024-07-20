@@ -3,12 +3,13 @@
 {% block content %}
 <h1>{{ post.title }}</h1>
 <h4>By: {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.post_date }} </h4>
-<!-- {% if user.is_authenticated %}
+{% if user.is_authenticated %}
+{% if user.id == post.author.id %}
 <small><a href="{% url 'UpdateBlog' post.pk %}">Edit</a></small>
-{% if perms.blog.delete_blog %}
+
 <small class="ms-2"><a href="{% url 'DeleteBlog' post.pk %}">Delete</a></small>
 {% endif %}
-{% endif %} -->
+{% endif %}
 <hr>
 <br>
 {% if post.header_image %}
@@ -19,4 +20,9 @@
 
 <br><br>
 <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+<form class="d-inline" action="{% url 'like_post' post.pk %}" method="POST">
+   {% csrf_token %}
+   <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-success">Like</button>
+   - {{ total_likes }} Likes
+</form>
 {% endblock %}

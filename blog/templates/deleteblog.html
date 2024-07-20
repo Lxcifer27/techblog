@@ -6,7 +6,7 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-{% if perms.blog.delete_blog %}
+   {% if user.id == post.author.id %}
 
 <h1>Delete Post...</h1>
 <br> <br>
