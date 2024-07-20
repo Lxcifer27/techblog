@@ -10,7 +10,7 @@ Features:
 • Add/Edit/Delete Blog
 • User Blog Dashboard
 • Like Dislike Blog
-• Image Upload Functionality
+• Image Upload Functionality  
 • RichTextEditor
 
 ## Pre-Requisite
